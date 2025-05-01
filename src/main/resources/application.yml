@@ -1,0 +1,28 @@
+
+spring:
+  application:
+    name: Contents
+  datasource:
+    url: jdbc:mysql://localhost:3306/contents?useUnicode=yes&characterEncoding=UTF-8&rewriteBatchedStatements=true
+    username: abcd
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: true
+    properties:
+      hibernate:
+        format_sql: true
+  data:
+    redis:
+      host: localhost
+      port: 6380
+
+logging:
+  level:
+    org.hibernate.orm.jdbc.bind: trace
+
+server:
+  shutdown: graceful
