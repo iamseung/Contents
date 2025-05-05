@@ -29,4 +29,8 @@ public class Content {
     private boolean isFree;
     private LocalDateTime eventStartAt;
     private LocalDateTime eventEndAt;
+
+    public boolean isCanPurchase(User user) {
+        return !isAdult ? true : user.isAdult();
+    }
 }
