@@ -57,6 +57,6 @@ public class CustomUserDetails implements UserDetails {
     }
 
     public UserDto toDto() {
-        return UserDto.of(id, userId, password);
+        return UserDto.of(id, userId, password, isAdult);
     }
 }

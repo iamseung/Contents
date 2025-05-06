@@ -1,6 +1,5 @@
 package com.example.contents.service;
 
-
 import com.example.contents.domain.dto.CustomUserDetails;
 import com.example.contents.domain.entity.User;
 import com.example.contents.repository.UserRepository;
