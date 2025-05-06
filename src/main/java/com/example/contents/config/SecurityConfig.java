@@ -1,6 +1,5 @@
 package com.example.contents.config;
 
-
 import com.example.contents.jwt.JwtAuthenticationFilter;
 import com.example.contents.jwt.JwtUtil;
 import com.example.contents.service.CustomUserDetailsService;
