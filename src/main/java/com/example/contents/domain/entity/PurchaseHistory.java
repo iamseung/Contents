@@ -23,4 +23,14 @@ public class PurchaseHistory {
     private Content content;
 
     private LocalDateTime purchasedAt;
+
+    private PurchaseHistory(User user, Content content) {
+        this.user = user;
+        this.content = content;
+        this.purchasedAt = LocalDateTime.now();
+    }
+
+    public static PurchaseHistory of(User user, Content content) {
+        return new PurchaseHistory(user, content);
+    }
 }

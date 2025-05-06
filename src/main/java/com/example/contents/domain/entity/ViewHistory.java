@@ -23,4 +23,14 @@ public class ViewHistory {
     private Content content;
 
     private LocalDateTime viewedAt;
+
+    private ViewHistory(User user, Content content, LocalDateTime viewedAt) {
+        this.user = user;
+        this.content = content;
+        this.viewedAt = viewedAt;
+    }
+
+    public static ViewHistory of(User user, Content content) {
+        return new ViewHistory(user, content, LocalDateTime.now());
+    }
 }

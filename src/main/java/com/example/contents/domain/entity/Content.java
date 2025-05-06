@@ -22,15 +22,40 @@ public class Content {
 
     private String description;
 
-    @Column(nullable = false)
     private boolean isAdult;
 
     @Column(nullable = false)
     private boolean isFree;
+
     private LocalDateTime eventStartAt;
     private LocalDateTime eventEndAt;
+    private LocalDateTime createdAt;
 
-    public boolean isCanPurchase(User user) {
+    public boolean isCanAccess(User user) {
         return !isAdult ? true : user.isAdult();
+    }
+
+    // 유료일 경우, 구매 수단 및 방법에 대한 로직 추가
+    public boolean isFree() {
+        LocalDateTime now = LocalDateTime.now();
+
+        // 이벤트 기간이 없으면 기본 유료/무료 여부에 따름
+        if (eventStartAt == null || eventEndAt == null) {
+            return isFree;
+        }
+
+        return now.isAfter(eventStartAt) && now.isBefore(eventEndAt);
+    }
+
+    private Content(String title, String description, boolean isAdult, boolean isFree) {
+        this.title = title;
+        this.description = description;
+        this.isAdult = isAdult;
+        this.isFree = isFree;
+        this.createdAt = LocalDateTime.now();
+    }
+
+    public static Content of(String title, String description, boolean isAdult, boolean isFree) {
+        return new Content(title, description, isAdult, isFree);
     }
 }
